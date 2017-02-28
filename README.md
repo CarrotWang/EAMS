@@ -2,7 +2,7 @@
 
 Educational administration management system
 
-Node Express Sequlize Mysql
+Node Express Sequelize Mysql
 ## Installation
 
 ## Start up
