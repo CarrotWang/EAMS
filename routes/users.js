@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var User=require("../model/models/manager");
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
