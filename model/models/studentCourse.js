@@ -35,6 +35,11 @@ var StudentCourse=sequelizer.define("t_student_course",{//定义表
         allowNull:false,
         comment:"course address"
     },
+    enrollTime:{
+        type:Sequelize.DATE,
+        allowNull:false,
+        comment:""
+    },
     infoType:{
         type:Sequelize.ENUM(1,2),
         allowNull:false,
@@ -44,6 +49,11 @@ var StudentCourse=sequelizer.define("t_student_course",{//定义表
         type:Sequelize.STRING,
         allowNull:false,
         comment:""
+    },
+    feePaid:{
+        type:Sequlize.INTEGER,
+        allowNull:false,
+        comment:"fee paid"
     },
     feeType:{
         type:Sequelize.ENUM(1,2),

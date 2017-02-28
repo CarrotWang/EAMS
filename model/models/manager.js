@@ -11,13 +11,19 @@ var Manager=sequelizer.define("t_manager",{//定义表
         autoIncrement:true,
         comment:"pk"
     },
+    phone:{
+        //
+        type:Sequelize.STRING,
+        allowNull: false,
+        comment:"teacher phone"
+    },
     userName:{
 		//
         type:Sequelize.STRING,
         allowNull: false,
         comment:"teacher or manager name"
     },
-    passwd:{
+    password:{
         //
         type:Sequelize.STRING,
         allowNull: false,

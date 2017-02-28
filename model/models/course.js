@@ -22,6 +22,12 @@ var Course=sequelizer.define("t_course",{//定义表
         allowNull: false,
         comment:"course name"
     },
+    subjectId:{
+        //
+        type:Sequelize.STRING,
+        allowNull: false,
+        comment:"subject id"
+    },
     teacherId:{
         type:Sequlize.INTEGER,
         allowNull:false,
