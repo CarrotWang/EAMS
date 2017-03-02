@@ -7,5 +7,6 @@ Node Express Sequelize Mysql
 npm install  
 
 ## Start up
+npm run
 
-
+hot-deployment(for backend develop)：npm run starthot
