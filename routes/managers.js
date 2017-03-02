@@ -19,7 +19,7 @@ router.post('/login',function(req,res,next){
         if(!msg){
             res.json({status:4,msg:'not exist'});
         }else if(msg.password==password){
-            var user={id:msg.id,userName:msg.userName,password:msg.password,};
+            var user={id:msg.id,userName:msg.userName,password:msg.password,authorityType:msg.authorityType};
             req.session.user=user;
             res.json({status:0,msg:'login success',id:msg.id,authorityType:msg.authorityType});
         }else{
@@ -51,20 +51,56 @@ router.post('/addManager',authority.checkAuthorityLevel3,function(req,res,next){
 
 })
 //3.退出登陆
-
+router.get('/logout',authority.checkLogin,function(req,res,next){
+    req.session.user=null;
+    res.json({status:0});
+});
 
 //4.删除管理员/教师
+router.post('/delete',authority.checkAuthorityLevel3,function (req,res,next) {
+    var id=req.body.id;
+    Manager.destroy({where:{'id':id}}).then(function (result){
+        console.log(result);
+        res.send({status:0})
+    },function (result) {
+        console.log(result);
+        res.send({status:1})
+    });
+})
 
-
-//5.更改管理员/教师信息
-
+//5.超级管理员更改管理员/教师信息
+router.post('/update',authority.checkAuthorityLevel3,function (req,res,next) {
+    var newInfo={phone:req.body.phone,userName:req.body.userName,
+        password:req.body.password,authorityType:req.body.authorityType,workType:req.body.workType};
+    //对于值为undefined的项，不会更新
+    console.log(newInfo);
+    Manager.update(newInfo,{where:{id:req.body.id}}).then(function(){
+        res.send({status:0});
+    },function(e){
+        console.log(e)
+        res.send({status:1});
+    })
+})
 
 //6.管理员/教师信息列表
-
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-    res.send('respond with a resource');
-});
+router.get('/getList',authority.checkAuthorityLevel3,function(req,res,next){
+    var page=req.param("page");//page number
+    var num=req.param("num");//the number of list in the page
+    if(!page){
+        page=1;
+    }
+    var pageTotalNum=1; //the total number of pages
+    Manager.count().then(function(msg){
+        if(msg%num==0&&msg!=0){
+            pageTotalNum=Math.floor(msg/num);
+        }else{
+            pageTotalNum=Math.floor(msg/num)+1;
+        }
+    })
+    Manager.findAll({limit:[(page-1)*parseInt(num),parseInt(num)]}).then(function(msgs){
+        res.send({status:0,list:msgs,page:page,num:num,pageTotalNum:pageTotalNum})
+    })
+})
 
 
 module.exports = router;

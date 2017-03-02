@@ -15,49 +15,49 @@ var StudentCourse=sequelizer.define("t_student_course",{//定义表
         comment:"pk"
     },
     studentId:{
-        type:Sequlize.INTEGER,
-        allowNull:false,
+        type:Sequelize.INTEGER,
+        allowNull:true,
         comment:"teacher pk"
 
     },
     courseId:{
         type:Sequelize.STRING,
-        allowNull:false,
+        allowNull:true,
         comment:"course address"
     },
     courseNum:{
         type:Sequelize.STRING,
-        allowNull:false,
+        allowNull:true,
         comment:"course number"
     },
     courseName:{
         type:Sequelize.STRING,
-        allowNull:false,
+        allowNull:true,
         comment:"course address"
     },
     enrollTime:{
         type:Sequelize.DATE,
-        allowNull:false,
+        allowNull:true,
         comment:""
     },
     infoType:{
-        type:Sequelize.ENUM(1,2),
-        allowNull:false,
+        type:Sequelize.ENUM('1','2'),
+        allowNull:true,
         comment:"the type of get the information,1:other recommend,2:old student"
     },
     recordPerson:{
         type:Sequelize.STRING,
-        allowNull:false,
+        allowNull:true,
         comment:""
     },
     feePaid:{
-        type:Sequlize.INTEGER,
-        allowNull:false,
+        type:Sequelize.INTEGER,
+        allowNull:true,
         comment:"fee paid"
     },
     feeType:{
-        type:Sequelize.ENUM(1,2),
-        allowNull:false,
+        type:Sequelize.ENUM('1','2'),
+        allowNull:true,
         comment:"the type of fee, 1:vista,2:"
     },
     description:{

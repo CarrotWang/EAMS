@@ -13,55 +13,55 @@ var Course=sequelizer.define("t_course",{//定义表
     },
     number:{
         type:Sequelize.STRING,
-        allowNull: false,
+        allowNull: true,
         comment:"course number"
     },
     name:{
         //
         type:Sequelize.STRING,
-        allowNull: false,
+        allowNull: true,
         comment:"course name"
     },
     subjectId:{
         //
         type:Sequelize.STRING,
-        allowNull: false,
+        allowNull: true,
         comment:"subject id"
     },
     teacherId:{
-        type:Sequlize.INTEGER,
-        allowNull:false,
+        type:Sequelize.INTEGER,
+        allowNull:true,
         comment:"teacher pk"
     },
     teacherName:{
-        type:Sequlize.STRING,
-        allowNull:false,
+        type:Sequelize.STRING,
+        allowNull:true,
         comment:"teacher name"
 
     },
     address:{
         type:Sequelize.STRING,
-        allowNull:false,
+        allowNull:true,
         comment:"course address"
     },
     beginDate:{
         type:Sequelize.DATE,
-        allowNull:false,
+        allowNull:true,
         comment:"begin date"
     },
     endDate:{
         type:Sequelize.DATE,
-        allowNull:false,
+        allowNull:true,
         comment:"end date"
     },
     times:{
         type:Sequelize.INTEGER,
-        allowNull:false,
+        allowNull:true,
         comment:"course lesson number"
     },
     fee:{
         type:Sequelize.INTEGER,
-        allowNull:false,
+        allowNull:true,
         comment:"fee for the course"
     },
     description:{

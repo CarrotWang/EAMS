@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+    "starthot": "supervisor ./bin/www",
     "start": "node ./bin/www"
   },
   "dependencies": {

@@ -14,19 +14,19 @@ var Manager=sequelizer.define("t_manager",{//定义表
     phone:{
         //
         type:Sequelize.STRING,
-        allowNull: false,
+        allowNull: true,
         comment:"teacher phone"
     },
     userName:{
 		//
         type:Sequelize.STRING,
-        allowNull: false,
+        allowNull: true,
         comment:"teacher or manager name"
     },
     password:{
         //
         type:Sequelize.STRING,
-        allowNull: false,
+        allowNull: true,
         comment:"password"
     },
     authorityType:{
@@ -38,12 +38,12 @@ var Manager=sequelizer.define("t_manager",{//定义表
 
          */
 
-        allowNull:false,
+        allowNull:true,
         comment:"Authority Level: 1 for normal teacher, 2 for manager, 3 for super manager"
     },
     workType:{
         type:Sequelize.ENUM("1","2"),
-        allowNull:false,
+        allowNull:true,
         comment:"1 for teacher, 2 for manager"
     }
 

@@ -14,7 +14,7 @@ var Student=sequelizer.define("t_student",{//定义表
     name:{
         //
         type:Sequelize.STRING,
-        allowNull: false,
+        allowNull: true,
         comment:"student name"
     },
     passwd:{
@@ -39,19 +39,19 @@ var Student=sequelizer.define("t_student",{//定义表
     parentName:{
         //
         type:Sequelize.STRING,
-        allowNull:false,
+        allowNull:true,
         comment:"parent name"
     },
     parentType:{
         //
         type:Sequelize.ENUM("father","mother"),
-        allowNull:false,
+        allowNull:true,
         comment:"parent type"
     },
     parentPhone:{
         //
         type:Sequelize.STRING,
-        allowNull:false,
+        allowNull:true,
         comment:"parent phone number"
     }
 

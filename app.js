@@ -4,8 +4,13 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var session = require('express-session');
 
 var managers = require('./routes/managers');
+var courses = require('./routes/courses');
+var students = require('./routes/students');
+var subjects = require('./routes/subjects');
+var studentCourses = require('./routes/studentCourses');
 
 var app = express();
 
@@ -18,6 +23,10 @@ app.set('view engine', 'ejs');
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+//app.use(bodyParser.json({limit: '1mb'}));  //body-parser 解析json格式数据
+//app.use(bodyParser.urlencoded({            //此项必须在 bodyParser.json 下面,为参数编码
+//    extended: true
+//}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({
@@ -28,7 +37,11 @@ app.use(session({
     saveUninitialized: true,
 }));
 
-app.use('/managers', managers);
+app.use('/manager', managers);
+app.use('/course', courses);
+app.use('/student', students);
+app.use('/studentCourse', studentCourses);
+app.use('/subject', subjects);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');

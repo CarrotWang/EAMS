@@ -3,7 +3,7 @@
  */
 var Sequelize=require("sequelize");
 var sequelizer=require("../sequelizer");
-var Course=sequelizer.define("t_course", {//定义表
+var Subject=sequelizer.define("t_subject", {//定义表
     id: {
         //
         type: Sequelize.INTEGER,
@@ -13,7 +13,9 @@ var Course=sequelizer.define("t_course", {//定义表
     },
     name:{
         type:Sequelize.STRING,
-        allowNull: false,
+        allowNull: true,
         comment:"subject name"
     }
 });
+Subject.sync();//生成表
+module.exports=Subject;
